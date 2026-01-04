@@ -19,7 +19,7 @@ A privacy-first, client-side web app to analyze your Amazon retail order history
 3. Explore your spending patterns interactively
 
 ## How to use the Hosted Version (does not store data)
-Click [here] (https://vvijayan1.github.io/amazon_spend_analyzer/) to access the hosted version of the app.
+Click [here](https://vvijayan1.github.io/amazon_spend_analyzer/) to access the hosted version of the app.
 
 ## Privacy
 - No data leaves your browser
