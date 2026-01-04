@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Amazon Purchase History Analyzer</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Amazon Purchase History Analyzer</h1>
+      <p class="muted">Privacy-first. All processing happens in your browser — no data leaves your device.</p>
+    </header>
+
+    <section class="controls">
+      <div class="upload-instructions" style="max-width:600px;margin:2rem auto 1rem auto;padding:1rem 2rem;background:#23272e;border-radius:8px;color:#e2e8f0;">
+        <strong>Important:</strong> Please upload your <b>Amazon Retail Order History</b> CSV file.<br>
+        <ul style="margin-top:0.5em;">
+          <li>This app only works with the <b>retail order history</b> export, not digital orders, returns, or other Amazon data files.</li>
+          <li>The correct file is usually named <code>Retail.OrderHistory.csv</code> or similar.</li>
+          <li>The file must contain columns like <code>OrderDate</code>, <code>TotalOwed</code>, <code>ProductName</code>, <code>OrderStatus</code>, and <code>Currency</code>.</li>
+
+        </ul>
+        <div id="filters" style="display:flex;gap:1.5rem;align-items:center;justify-content:center;margin-top:1.5rem;">
+          <label for="year-from">Year from:</label>
+          <select id="year-from"></select>
+          <label for="year-to">Year to:</label>
+          <select id="year-to"></select>
+          <button id="apply-filters">Apply Filter</button>
+          <button id="clear-data">Clear</button>
+        </div>
+      </div>
+      <div style="text-align:center;margin:1.5rem 0;">
+        <input type="file" id="csv-file" accept=".csv">
+      </div>
+    </section>
+
+    <section id="visuals" class="visuals hidden">
+      <div class="chart-grid">
+        <div class="card">
+          <h2>Total Spend by Year</h2>
+          <canvas id="chart-year"></canvas>
+        </div>
+
+        <div class="card">
+          <h2>Spend by Month (aggregated)</h2>
+          <canvas id="chart-month"></canvas>
+        </div>
+
+        <div class="card">
+          <h2>Purchases by Day of Week</h2>
+          <canvas id="chart-weekday"></canvas>
+        </div>
+
+        <div class="card">
+          <h2>Payment Type Distribution</h2>
+          <canvas id="chart-payment"></canvas>
+        </div>
+      </div>
+
+      <div class="tables">
+        <div class="card">
+          <h3>Top 5 Highest-Value Purchases</h3>
+          <table id="top-high"><thead><tr><th>Product</th><th>Order Date</th><th>Amount</th></tr></thead><tbody></tbody></table>
+        </div>
+
+        <div class="card">
+          <h3>Top 5 Lowest-Value Purchases</h3>
+          <table id="top-low"><thead><tr><th>Product</th><th>Order Date</th><th>Amount</th></tr></thead><tbody></tbody></table>
+        </div>
+      </div>
+    </section>
+
+    <footer class="muted small">No data is uploaded to any server. Data is held only in memory and cleared on refresh.</footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
