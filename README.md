@@ -13,10 +13,13 @@ A privacy-first, client-side web app to analyze your Amazon retail order history
 - Currency display matches the currency with the most purchases
 - No data storage, export, or backend
 
-## How to Use
+## How to Use Yourself Locally
 1. Open `index.html` in your browser (double-click or use a local server)
 2. Upload your Amazon CSV file
 3. Explore your spending patterns interactively
+
+## How to use the Hosted Version (does not store data)
+Click [here] (https://vvijayan1.github.io/amazon_spend_analyzer/) to access the hosted version of the app.
 
 ## Privacy
 - No data leaves your browser
